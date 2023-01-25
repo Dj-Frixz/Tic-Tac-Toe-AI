@@ -23,7 +23,7 @@ class Tris:
             return a,b
         turns = 0
         game = np.copy(self.game)
-        Value = np.empty(9,np.int8)
+        Value = np.empty(9,np.float16)
 
         for a in range(3):
             for b in range(3):
@@ -36,7 +36,7 @@ class Tris:
                         Value[(3*a)+b] = self.bruteforce(game,a,b,turns)
                 else:
                     Value[(3*a)+b] = -50 # -50 is just to represent -inf, as the cell isn't empty
-        #print(Value)
+        print(Value)
 
         # WHAT THE ACTUAL FUCK IS THIS "CODE"??
         # index = -1
@@ -99,22 +99,14 @@ class Tris:
         else:
             game[y,x] = self.pl
 
-        if (y+x)%2==0:
-            if game[0,0]==game[1,1]==game[2,2] or game[0,2]==game[1,1]==game[2,0]:    #DIAGONALS check for CENTER and CORNER
-                if game[1,1]==self.pc:
-                    return 1
-                elif game[1,1]==self.pl:
-                    return -1
+        if y==x   and game[0,0]==game[1,1]==game[2,2]:    #DIAGONALS check for CENTER and CORNERS
+            return myturn*2 -1
+        if y+x==2 and game[0,2]==game[1,1]==game[2,0]:    #DIAGONALS check for CENTER and CORNERS
+            return myturn*2 -1
         if game[y,0]==game[y,1]==game[y,2]:                                              #Relative RAW check
-            if game[y,0]==self.pc:
-                return 1
-            elif game[y,0]==self.pl:
-                return -1
+            return myturn*2 -1
         if game[0,x]==game[1,x]==game[2,x]:                                              #Relative COLUMN check
-            if game[0,x]==self.pc:
-                return 1
-            elif game[0,x]==self.pl:
-                return -1
+            return myturn*2 -1
         # if (game[0].count(0) + game[1].count(0) + game[2].count(0))==0:       funny to look at how old me used to code
 
         if np.count_nonzero(game) == 9:                                                     #TIE check
