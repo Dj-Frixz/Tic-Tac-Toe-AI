@@ -34,7 +34,7 @@ class Game:
         self._draw_init()
         while 1:
             if self.AI.turn:
-                a,b = self.AI.Compute()
+                a,b = self.AI.Compute(fastest_win=0)
                 self._pc_move(a,b)
                 check = self.AI.CheckWin(self.AI.game,a,b,True)
                 if check == 1:

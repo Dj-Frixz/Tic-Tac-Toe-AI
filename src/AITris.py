@@ -14,7 +14,7 @@ class Tris:
         self.first = self.pc<self.pl
         self.turn = self.first
 
-    def Compute(self):
+    def Compute(self,fastest_win=1):
         if np.count_nonzero(self.game)==0:
             a = np.random.randint(3)
             b = np.random.randint(3)
@@ -30,13 +30,16 @@ class Tris:
                 if game[a,b]==0:
                     points = self.CheckWin(game,a,b,True)
                     if points!=-5:
-                        self.game[a,b] = self.pc
-                        return a,b #,self.pc
+                        if fastest_win:
+                            self.game[a,b] = self.pc
+                            return a,b #,self.pc
+                        else:
+                            Value[(3*a)+b] = 1
                     else:
                         Value[(3*a)+b] = self.bruteforce(game,a,b,turns)
                 else:
                     Value[(3*a)+b] = -50 # -50 is just to represent -inf, as the cell isn't empty
-        print(Value)
+        #print(Value)
 
         # WHAT THE ACTUAL FUCK IS THIS "CODE"??
         # index = -1
@@ -80,7 +83,7 @@ class Tris:
                         Value.append(self.bruteforce(game,a,b,turns))
         if myturn:
             nmax = max(Value)
-            if turns==2:
+            if turns==2 and nmax!=1:
                 return nmax+(0.1*Value.count(1))
             return nmax
         else:
