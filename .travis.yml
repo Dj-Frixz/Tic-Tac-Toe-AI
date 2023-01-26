@@ -10,7 +10,7 @@ install:
 
 script:
   - pyinstaller --windowed --onefile main.py -n TicTacToe -p lib --add-data data/sprites:data/sprites -i data/sprites/Red_x.png
-  - zip -r dist.zip dist/
+#  - zip -r dist.zip dist/
 #  - find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
 #  - git checkout master
 #  - git add dist/
@@ -27,5 +27,6 @@ before_deploy:
 deploy:
   provider: releases
   token: $GH_TOKEN
-  file: "dist.zip"
+  file_glob: true
+  file: "dist/*"
   cleanup: false
