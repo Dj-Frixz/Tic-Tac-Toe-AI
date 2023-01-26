@@ -10,10 +10,10 @@ install:
 
 script:
   - pyinstaller --windowed --onefile main.py -n TicTacToe -p lib --add-data data/sprites:data/sprites -i data/sprites/Red_x.png
-  - tree
-  - git checkout master
-  - git add dist/
-  - git commit -m "New MacOS app released!"
+  - find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
+#  - git checkout master
+#  - git add dist/
+#  - git commit -m "New MacOS app released!"
 
 before_deploy:
   # Set up git user name and tag this commit
