@@ -10,11 +10,12 @@ install:
 
 script:
   - pyinstaller --windowed --onefile main.py -n TicTacToe -p lib --add-data data/sprites:data/sprites -i data/sprites/Red_x.png
+  - ls
 
 deploy:
   provider: releases
   token: $GH_TOKEN
-  file: dist/TicTacToe.app
+  file: dist/TicTacToe
   cleanup: false
   on:
     all_branches: true
