@@ -29,6 +29,5 @@ before_deploy:
 deploy:
   provider: releases
   token: $GH_TOKEN
-  file_glob: true
-  file: "dist/*"
+  file: "./dist/TicTacToe.app"
   skip_cleanup: true
