@@ -10,7 +10,7 @@ install:
 
 script:
   - pyinstaller --windowed --onefile main.py -n TicTacToe -p lib --add-data data/sprites:data/sprites -i data/sprites/Red_x.png
-  - ls dist
+  - tree
   - git checkout master
   - git add dist/
   - git commit -m "New MacOS app released!"
@@ -25,5 +25,5 @@ before_deploy:
 deploy:
   provider: releases
   token: $GH_TOKEN
-  file: dist/
+  file: dist/TicTacToe.app
   cleanup: false
