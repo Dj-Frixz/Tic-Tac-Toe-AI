@@ -6,7 +6,7 @@ osx_image: xcode11.2  # This specifies the version of Xcode and macOS to run the
 language: shell
 
 install:
-  - pip3 install pyinstaller
+  - pip3 install pyinstaller Pillow
 
 script:
   - pyinstaller --windowed --onefile main.py -n TicTacToe -p lib --add-data data/sprites:data/sprites -i data/sprites/Red_x.png
