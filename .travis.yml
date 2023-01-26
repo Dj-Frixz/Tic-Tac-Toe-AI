@@ -10,7 +10,8 @@ install:
 
 script:
   - pyinstaller --windowed --onefile main.py -n TicTacToe -p lib --add-data data/sprites:data/sprites -i data/sprites/Red_x.png
-  - ls dist/TicTacToe
+  - ls dist
+  - git add dist/
 
 deploy:
   provider: releases
