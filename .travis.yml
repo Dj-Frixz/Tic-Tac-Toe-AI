@@ -27,4 +27,4 @@ deploy:
   provider: releases
   token: $GH_TOKEN
   file: dist.zip
-  cleanup: false
+  skip_cleanup: true
