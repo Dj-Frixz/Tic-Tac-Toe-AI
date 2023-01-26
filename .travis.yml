@@ -14,12 +14,16 @@ script:
   - git checkout master
   - git add dist/
   - git commit -m "New MacOS app released!"
-  - git push
+
+before_deploy:
+  # Set up git user name and tag this commit
+  - git config --local user.name Dj-Frixz
+  - git config --local user.email gmsccntdenmark@gmail.com
+  - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+  - git tag $TRAVIS_TAG
 
 deploy:
   provider: releases
   token: $GH_TOKEN
-  file: dist/TicTacToe.app
+  file: dist/
   cleanup: false
-  on:
-    all_branches: true
