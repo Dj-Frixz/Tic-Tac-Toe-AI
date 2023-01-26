@@ -29,4 +29,4 @@ deploy:
   token: $GH_TOKEN
   file_glob: true
   file: "dist/*"
-  cleanup: false
+  skip_cleanup: true
