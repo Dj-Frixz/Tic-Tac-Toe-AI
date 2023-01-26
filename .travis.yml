@@ -17,4 +17,4 @@ deploy:
   file: dist/TicTacToe.app
   cleanup: false
   on:
-    tags: true
+    all_branches: true
