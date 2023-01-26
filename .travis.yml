@@ -13,6 +13,7 @@ script:
   - ls dist
   - git add dist/
   - git commit -m "New MacOS app released!"
+  - git checkout master
   - git push
 
 deploy:
