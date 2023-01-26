@@ -26,5 +26,5 @@ before_deploy:
 deploy:
   provider: releases
   token: $GH_TOKEN
-  file: dist.zip
+  file: "dist.zip"
   skip_cleanup: true
