@@ -9,7 +9,7 @@ install:
   - pip3 install pyinstaller
 
 script:
-  - pyinstaller --windowed main.py -n TicTacToe -d lib --add-data data/sprites:data/sprites -i data/sprites/Red_x.png
+  - pyinstaller --windowed --onefile main.py -n TicTacToe -p lib --add-data data/sprites:data/sprites -i data/sprites/Red_x.png
 
 deploy:
   provider: releases
