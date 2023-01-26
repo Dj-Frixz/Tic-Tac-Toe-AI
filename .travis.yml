@@ -10,6 +10,8 @@ install:
 
 script:
   - pyinstaller --windowed --onefile main.py -n TicTacToe -p lib --add-data data/sprites:data/sprites -i data/sprites/Red_x.png
+  - ls -la
+  - find . -name "TicTacToe.app"
 #  - zip -r dist.zip dist/
 #  - find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
 #  - git checkout master
