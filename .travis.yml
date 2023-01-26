@@ -13,8 +13,8 @@ script:
 
 deploy:
   provider: releases
-  api_key: $GH_TOKEN
-  file: dist/TicTacToe
-  skip_cleanup: true
+  token: $GH_TOKEN
+  file: dist/TicTacToe.app
+  cleanup: false
   on:
     tags: true
