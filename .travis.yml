@@ -11,9 +11,9 @@ install:
 script:
   - pyinstaller --windowed --onefile main.py -n TicTacToe -p lib --add-data data/sprites:data/sprites -i data/sprites/Red_x.png
   - ls dist
+  - git checkout master
   - git add dist/
   - git commit -m "New MacOS app released!"
-  - git checkout master
   - git push
 
 deploy:
