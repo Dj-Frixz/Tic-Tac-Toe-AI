@@ -6,10 +6,10 @@ osx_image: xcode11.2  # This specifies the version of Xcode and macOS to run the
 language: shell
 
 install:
-  - pip3 install pyinstaller Pillow
+  - pip3 install pyinstaller Pillow numpy pygame
 
 script:
-  - pyinstaller --windowed --onefile main.py -n TicTacToe -p lib --add-data data/sprites:data/sprites -i data/sprites/Red_x.png
+  - pyinstaller --windowed --onefile main.py -n TicTacToe --add-data data/sprites:data/sprites -i data/sprites/Red_x.png
   - zip -r v1.1.0-mac.zip ./dist/TicTacToe.app
 #  - find . -name "v1.1.0-mac.zip"
 #  - find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
