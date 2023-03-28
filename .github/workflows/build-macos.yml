@@ -29,4 +29,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: TicTacToe
-        path: dist/v1.1.0-mac.zip
+        path: v1.1.0-mac.zip
