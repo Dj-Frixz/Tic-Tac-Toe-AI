@@ -11,3 +11,4 @@ TicTacToe.spec
 TicTacToe(zip).spec
 build
 dist
+data/__pycache__
