@@ -1,0 +1,31 @@
+name: Build and upload macos binary
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyinstaller Pillow numpy pygame
+    - name: Build binary
+      run: |
+        pyinstaller --windowed --onefile main.py -n TicTacToe --add-data data/sprites:data/sprites -i data/sprites/Red_x.png
+        zip -r v1.1.0-mac.zip ./dist/TicTacToe.app
+    - name: Upload binary
+      uses: actions/upload-artifact@v2
+      with:
+        name: TicTacToe
+        path: dist/v1.1.0-mac.zip
