@@ -23,6 +23,7 @@ class Game:
         self.empty_cells = np.full(7,6,np.int8)
         self.last_move = 0
         self.font = pygame.font.Font(None, 50)
+        self.losses = 0
 
     def _init_pygame(self):
         pygame.init()
@@ -39,6 +40,7 @@ class Game:
                 check = self.AI.CheckWin(self.AI.game,a,b,True)
                 if check == 1:
                     self._game_over_screen("I'm sorry, you lost. L ez win lol.")
+                    self.losses+=1
                 elif check == 0:
                     self._game_over_screen("It's a tie. Dang.")
             else:
@@ -50,7 +52,8 @@ class Game:
         while 1:
             for event in pygame.event.get():
                 if event.type==pygame.QUIT:
-                    quit()
+                    self._game_over_screen("Bye pussy. I've beaten your ass %i times."%self.losses,(150,50,0))
+                    sys.exit()
                 if event.type==pygame.MOUSEBUTTONDOWN and event.button==1:
                     if restart:
                         self.AI.Reset()
@@ -81,8 +84,8 @@ class Game:
         self.screen.blit(self.pawn[self.AI.pc],self.grid[a][b].topleft)
         pygame.display.flip()
 
-    def _game_over_screen(self,message:str):
-        game_over = self.font.render(message, False, (0,0,0), (255,255,255))
+    def _game_over_screen(self,message:str,bg=(255,255,255)):
+        game_over = self.font.render(message, False, (0,0,0), bg)
         rect = game_over.get_rect()
         rect.center = (500,500)
         self.screen.blit(game_over,rect.topleft)
