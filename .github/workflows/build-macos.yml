@@ -12,9 +12,9 @@ jobs:
     runs-on: macos-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Setup Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v3
       with:
         python-version: '3.9'
     - name: Install dependencies
@@ -24,9 +24,9 @@ jobs:
     - name: Build binary
       run: |
         pyinstaller --windowed --onefile main.py -n TicTacToe --add-data data/sprites:data/sprites -i data/sprites/Red_x.png
-        zip -r v1.1.0-mac.zip ./dist/TicTacToe.app
+        # zip -r v1.1.0-mac.zip ./dist/TicTacToe.app
     - name: Upload binary
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
-        name: TicTacToe
-        path: v1.1.0-mac.zip
+        name: tictactoe-1.1.0-macos
+        path: dist/TicTacToe.app
