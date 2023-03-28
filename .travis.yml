@@ -14,7 +14,6 @@ script:
 #  - find . -name "v1.1.0-mac.zip"
 #  - find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
 #  - git checkout master
-#  - git add dist/
 #  - git commit -m "New MacOS app released!"
 
 before_deploy:
