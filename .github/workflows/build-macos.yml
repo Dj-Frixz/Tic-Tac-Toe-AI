@@ -23,10 +23,11 @@ jobs:
         pip install pyinstaller Pillow numpy pygame
     - name: Build binary
       run: |
-        pyinstaller --windowed --onefile main.py -n TicTacToe --add-data data/sprites:data/sprites -i data/sprites/Red_x.png
+        pyinstaller --onefile main.py -n TicTacToe --add-data data/sprites:data/sprites -i data/sprites/Red_x.png
+        #  --windowed
         # zip -r v1.1.0-mac.zip ./dist/TicTacToe.app
     - name: Upload binary
       uses: actions/upload-artifact@v3
       with:
-        name: tictactoe-1.1.0-macos
+        name: tictactoe-1.2.0-macos-v2
         path: dist
