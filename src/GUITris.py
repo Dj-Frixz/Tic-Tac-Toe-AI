@@ -2,6 +2,9 @@ import sys
 sys.path.append('lib')
 import numpy as np
 from src.AITris import Tris
+from os import environ
+environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
+
 #import lib.pygame as pygame
 import pygame
 from data.utils import load_sprite

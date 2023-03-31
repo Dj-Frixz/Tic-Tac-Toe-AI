@@ -5,7 +5,7 @@ class Tris:
 
     def __init__(self,player=1,player2=2,mode='pc'):
         if player==0 or player2==0 or player==player2 or not(mode=='pc' or mode=='2p'):
-            print("Error: object 'Tris' initiallized uncorrectly!")
+            #print("Error: object 'Tris' initiallized uncorrectly!")
             return
         self.pl = player
         self.pc = player2
@@ -118,7 +118,8 @@ class Tris:
 
     def Move(self,a,b): #,turn=1):
         if self.game[a,b]!=0:
-            print("Can't make a move on a cell which is not zero!")
+            #print("Can't make a move on a cell which is not zero!")
+            return
         else:
             # if self.mode=='pc':
             #     self.game[a,b] = self.pl
@@ -128,10 +129,10 @@ class Tris:
             win = self.CheckWin(self.game,a,b,False)
             self.game[a,b] = self.pl
             if win==-1:
-                print("Victory player1!")
+                #print("Victory player1!")
                 return 1
             elif win==0:
-                # print("It's a tie!")
+                #print("It's a tie!")
                 return 0
             else:
                 return -1
